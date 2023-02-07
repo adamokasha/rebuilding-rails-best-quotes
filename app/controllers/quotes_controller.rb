@@ -5,6 +5,7 @@ class QuotesController < Rulers::Controller
   end
 
   def exception
+    # test rerun
     raise "It's an exception!"
   end
 end
