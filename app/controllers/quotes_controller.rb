@@ -1,11 +1,11 @@
 class QuotesController < Rulers::Controller
   def a_quote
-    "This is a really profound quote." +
-    "\n<pre>\n#{env}\n</pre>"
+    @adjective = "cool"
+    @ruby_version = RUBY_VERSION
+    render :a_quote, { adjective: @adjective, ruby_version: @ruby_version }
   end
 
   def exception
-    # test rerun
     raise "It's an exception!"
   end
 end
