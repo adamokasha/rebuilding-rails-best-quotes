@@ -4,17 +4,18 @@ class QuotesController < Rulers::Controller
   def a_quote
     @adjective = "cool"
     @ruby_version = RUBY_VERSION
-    render :a_quote, { adjective: @adjective, ruby_version: @ruby_version }
   end
 
   def index
     quotes = FileModel.all
-    render :index, :quotes => quotes
+    @quotes = quotes
   end
 
-  def quote_1
-    quote_1 = FileModel.find(1)
-    render :quote, :obj => quote_1
+  def show
+    quote = FileModel.find(params["id"])
+    ua = request.user_agent
+    @obj = quote
+    @ua = ua
   end
 
   def update
@@ -26,7 +27,7 @@ class QuotesController < Rulers::Controller
     })
     quote.save
 
-    render :quote, :obj => quote
+    @obj = quote
   end
 
   def exception
@@ -41,6 +42,6 @@ class QuotesController < Rulers::Controller
     }
 
     quote = FileModel.create(attrs)
-    render :quote, :obj => quote
+    @obj = quote
   end
 end
