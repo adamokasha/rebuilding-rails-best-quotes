@@ -7,6 +7,7 @@ PATH
       multi_json
       rack (~> 2.2)
       rack-test
+      sqlite3 (~> 1.6.0)
       webrick
 
 GEM
@@ -17,6 +18,7 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    mini_portile2 (2.8.1)
     minitest (5.17.0)
     multi_json (1.15.0)
     rack (2.2.6.2)
@@ -27,6 +29,8 @@ GEM
       ffi (~> 1.0)
     rerun (0.14.0)
       listen (~> 3.0)
+    sqlite3 (1.6.0)
+      mini_portile2 (~> 2.8.0)
     webrick (1.8.1)
 
 PLATFORMS

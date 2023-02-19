@@ -1,4 +1,5 @@
 require "securerandom"
+require_relative "../models/quote"
 
 class QuotesController < Rulers::Controller
   def a_quote
@@ -7,12 +8,12 @@ class QuotesController < Rulers::Controller
   end
 
   def index
-    quotes = FileModel.all
+    quotes = Quote.all
     @quotes = quotes
   end
 
   def show
-    quote = FileModel.find(params["id"])
+    quote = Quote.find(params["id"])
     ua = request.user_agent
     @obj = quote
     @ua = ua
@@ -21,7 +22,7 @@ class QuotesController < Rulers::Controller
   def update
     raise "Not found" unless env["REQUEST_METHOD"].downcase == "post"
 
-    quote = FileModel.find(1)
+    quote = Quote.find(1)
     quote.update({
       "submitter" => SecureRandom.uuid
     })
@@ -41,7 +42,7 @@ class QuotesController < Rulers::Controller
       "attribution" => "Me"
     }
 
-    quote = FileModel.create(attrs)
+    quote = Quote.create(attrs)
     @obj = quote
   end
 end
